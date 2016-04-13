@@ -81,16 +81,96 @@
     Job Location (State):
   <select name="State_JobLoc">
   	<option value="">Select...</option>
+     <option value="AL">AL</option>
+     <option value="AK">AK</option>
+     <option value="AZ">AZ</option>
+     <option value="AR">AR</option>
+     <option value="CA">CA</option>
+     <option value="CO">CO</option>
+     <option value="CT">CT</option>
+     <option value="DE">DE</option>
+     <option value="FL">FL</option>
+     <option value="GA">GA</option>
+     <option value="HI">HI</option>
+     <option value="ID">ID</option>
+     <option value="IL">IL</option>
+     <option value="IN">IN</option>
+     <option value="IA">IA</option>
+     <option value="KS">KS</option>
+     <option value="KY">KY</option>
+     <option value="LA">LA</option>
+     <option value="ME">ME</option>
+     <option value="MD">MD</option>
+     <option value="MA">MA</option>
+     <option value="MI">MI</option>
+     <option value="MN">MN</option>
+     <option value="MS">MS</option>
+     <option value="MO">MO</option>
+     <option value="DC">DC</option>
+     <option value="MT">MT</option>
+     <option value="NE">NE</option>
+     <option value="NV">NV</option>
+     <option value="NH">NH</option>
+     <option value="NJ">NJ</option>
+     <option value="NM">NM</option>
+     <option value="NY">NY</option>
+     <option value="NC">NC</option>
+     <option value="ND">ND</option>
+     <option value="OH">OH</option>
+     <option value="OK">OK</option>
+     <option value="OR">OR</option>
      <option value="PA">PA</option>
-     <option value="NY">New York</option>
-      <option value="NC">North Carolina</option>
-       <option value="CA">CA</option>
+     <option value="RI">RI</option>
+     <option value="SC">SC</option>
+     <option value="SD">SD</option>
+     <option value="TN">TN</option>
+     <option value="TX">TX</option>
+     <option value="UT">UT</option>
+     <option value="VT">VT</option>
+     <option value="VA">VA</option>
+     <option value="WA">WA</option>
+     <option value="WV">WV</option>
+     <option value="WI">WI</option>
+     <option value="WY">WY</option>
+     <option value="PR">PR</option>
   </select><br><br>
-  <label> Qualification Keyword (Primary): </label>
-	<input type="text" name="Qual_Key_Pri"><br>
-  <label> Qualification Keyword (Secondary): </label>
-	<input type="text" name="Qual_Key_Sec"><br>
-	<input type="submit" name="submit" value="Submit" />
+      Applicant Is Willing To Relocate:
+  <select name="Will_Relo">
+  	<option value="">Select...</option>
+     <option value="Yes">Yes</option>
+     <option value="No">No</option>
+  </select><br><br>
+    <label> Applicant's Industry of Interest: </label>
+	<input type="text" name="Spec_Ind"><br><br>
+  <label> Applicant's Area of Qualification (Primary Keyword): </label>
+	<input type="text" name="Qual_Key_Pri"><br><br>
+  <label> Applicant's Area of Qualification (Secondary Keyword): </label>
+	<input type="text" name="Qual_Key_Sec"><br><br>
+      Applicant's Minimum Salary Expections:
+  <select name="Min_Sal">
+  	<option value="">Select...</option>
+     <option value="$20000 - $29000">$20000 - $29000</option>
+     <option value="$30000 - $39000">$30000 - $39000</option>
+     <option value="$40000 - $49000">$40000 - $49000</option>
+     <option value="$50000 - $59000">$50000 - $59000</option>
+     <option value="$60000 - $69000">$60000 - $69000</option>
+     <option value="$70000 - $79000">$70000 - $79000</option>
+     <option value="$80000 - $89000">$80000 - $89000</option>
+     <option value="$90000 - $99000">$90000 - $99000</option>                    
+     <option value="$100000+">$100000+</option>
+  </select><br><br>	
+  Applicant's Service Rank (Pick 1):
+  <select name="Ser_Rank">
+  	<option value="">Select...</option>
+     <option value="Spouse">Spouse</option>
+     <option value="O-1">O-1</option>
+     <option value="O-2">O-2</option>
+     <option value="O-3">O-3</option>  
+     <option value="O-4">O-4</option>
+     <option value="O-5">O-5</option>
+     <option value="O-6">O-6</option>         
+  </select><br><br>	
+  	<input type="submit" name="submit" value="Submit" />
 	</form>
 	</div>
 	<?php 
