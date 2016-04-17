@@ -13,9 +13,40 @@
 	 if (isset($_POST['State_JobLoc']))
 {
 		 $State_JobLoc = $_POST['State_JobLoc'];
-		 $State_JobLoc = stripslashes($State_JobLoc);
-		 $State_JobLoc = mysql_real_escape_string($State_JobLoc);
-		 $user_query = "SELECT id, Desired_States_of_Employment FROM `vet_candidates` WHERE Desired_States_of_Employment ='$State_JobLoc' ";
+     $High_Ed = $_POST['High_Ed'];
+     $Type_pos = $_POST['Type_pos'];
+     $Will_Relo = $_POST['Will_Relo'];
+     $Spec_Ind= $_POST['Spec_Ind'];
+     $Qual_Key_Pri = $_POST['Qual_Key_Pri'];
+     $Min_Sal = $_POST['Min_Sal'];
+     $Ser_Rank = $_POST['Ser_Rank'];
+
+
+     $State_JobLoc = stripslashes($State_JobLoc);
+     $High_Ed = stripslashes($High_Ed);
+     $Type_pos = stripslashes($Type_pos);
+     $Will_Relo = stripslashes($Will_Relo);
+     $Spec_Ind = stripslashes($Spec_Ind);
+     $Qual_Key_Pri = stripslashes($Qual_Key_Pri);
+     $Min_Sal = stripslashes($Min_Sal);
+     $Ser_Rank = stripslashes($Ser_Rank);
+
+     $State_JobLoc = mysql_real_escape_string($State_JobLoc);
+     $High_Ed = mysql_real_escape_string($High_Ed);
+     $Type_pos = mysql_real_escape_string($Type_pos);
+     $Will_Relo = mysql_real_escape_string($Will_Relo);
+     $Spec_Ind = mysql_real_escape_string($Spec_Ind);
+     $Qual_Key_Pri = mysql_real_escape_string($Qual_Key_Pri);
+     $Min_Sal = mysql_real_escape_string($Min_Sal);
+     $Ser_Rank = mysql_real_escape_string($Ser_Rank);
+
+
+     $user_query = "SELECT id, Desired_States_of_Employment, Highest_Level_of_Education, Employment_Type, Willing_to_Relocate_YN, Specific_Industries_Jobs, Min_Salary_Expectations,
+     Service_Rank, KeywordsSelected
+     FROM `vet_candidates` WHERE (Desired_States_of_Employment LIKE '%$State_JobLoc%') AND (Highest_Level_of_Education='$High_Ed') AND (Employment_Type='$Type_pos') AND
+     (Willing_to_Relocate_YN='$Will_Relo') AND ( Specific_Industries_Jobs LIKE'%$Spec_Ind%') AND (Min_Salary_Expectations='$Min_Sal')
+     AND (Service_Rank='$Ser_Rank') AND (KeywordsSelected LIKE'%$Qual_Key_Pri%')";
+
 		 $user_result = mysql_query($user_query) or die(mysql_error());
 		 $user_rows = mysql_num_rows($user_result);	
 
@@ -144,19 +175,18 @@
 	<input type="text" name="Spec_Ind"><br><br>
   <label> Applicant's Area of Qualification (Primary Keyword): </label>
 	<input type="text" name="Qual_Key_Pri"><br><br>
-  <label> Applicant's Area of Qualification (Secondary Keyword): </label>
-	<input type="text" name="Qual_Key_Sec"><br><br>
+ 
       Applicant's Minimum Salary Expections:
   <select name="Min_Sal">
   	<option value="">Select...</option>
-     <option value="$20000 - $29000">$20000 - $29000</option>
-     <option value="$30000 - $39000">$30000 - $39000</option>
-     <option value="$40000 - $49000">$40000 - $49000</option>
-     <option value="$50000 - $59000">$50000 - $59000</option>
-     <option value="$60000 - $69000">$60000 - $69000</option>
-     <option value="$70000 - $79000">$70000 - $79000</option>
-     <option value="$80000 - $89000">$80000 - $89000</option>
-     <option value="$90000 - $99000">$90000 - $99000</option>                    
+     <option value="$20000 - $29999">$20000 - $29999</option>
+     <option value="$30000 - $39999">$30000 - $39999</option>
+     <option value="$40000 - $49999">$40000 - $49999</option>
+     <option value="$50000 - $59999">$50000 - $59999</option>
+     <option value="$60000 - $69999">$60000 - $69999</option>
+     <option value="$70000 - $79999">$70000 - $79999</option>
+     <option value="$80000 - $89999">$80000 - $89999</option>
+     <option value="$90000 - $99999">$90000 - $99999</option>                    
      <option value="$100000+">$100000+</option>
   </select><br><br>	
   Applicant's Service Rank (Pick 1):
