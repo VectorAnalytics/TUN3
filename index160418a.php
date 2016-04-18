@@ -17,9 +17,9 @@
      $Type_pos = $_POST['Type_pos'];
      $Will_Relo = $_POST['Will_Relo'];
      $Spec_Ind= $_POST['Spec_Ind'];
-    # $Qual_Key_Pri = $_POST['Qual_Key_Pri'];
-    # $Min_Sal = $_POST['Min_Sal'];
-    # $Ser_Rank = $_POST['Ser_Rank'];
+     $Qual_Key_Pri = $_POST['Qual_Key_Pri'];
+     $Min_Sal = $_POST['Min_Sal'];
+     $Ser_Rank = $_POST['Ser_Rank'];
 
 
      $State_JobLoc = stripslashes($State_JobLoc);
@@ -27,24 +27,25 @@
      $Type_pos = stripslashes($Type_pos);
      $Will_Relo = stripslashes($Will_Relo);
      $Spec_Ind = stripslashes($Spec_Ind);
-    # $Qual_Key_Pri = stripslashes($Qual_Key_Pri);
-    # $Min_Sal = stripslashes($Min_Sal);
-    # $Ser_Rank = stripslashes($Ser_Rank);
+     $Qual_Key_Pri = stripslashes($Qual_Key_Pri);
+     $Min_Sal = stripslashes($Min_Sal);
+     $Ser_Rank = stripslashes($Ser_Rank);
 
      $State_JobLoc = mysql_real_escape_string($State_JobLoc);
      $High_Ed = mysql_real_escape_string($High_Ed);
      $Type_pos = mysql_real_escape_string($Type_pos);
      $Will_Relo = mysql_real_escape_string($Will_Relo);
      $Spec_Ind = mysql_real_escape_string($Spec_Ind);
-    # $Qual_Key_Pri = mysql_real_escape_string($Qual_Key_Pri);
-    # $Min_Sal = mysql_real_escape_string($Min_Sal);
-    # $Ser_Rank = mysql_real_escape_string($Ser_Rank);
+     $Qual_Key_Pri = mysql_real_escape_string($Qual_Key_Pri);
+     $Min_Sal = mysql_real_escape_string($Min_Sal);
+     $Ser_Rank = mysql_real_escape_string($Ser_Rank);
 
 
      $user_query = "SELECT id, Desired_States_of_Employment, Highest_Level_of_Education, Employment_Type, Willing_to_Relocate_YN, Specific_Industries_Jobs, Min_Salary_Expectations,
      Service_Rank, KeywordsSelected, MailingState, Status_c
      FROM `vet_candidates` WHERE (Desired_States_of_Employment LIKE '%$State_JobLoc%') AND (Highest_Level_of_Education='$High_Ed') AND (Employment_Type='$Type_pos') AND
-     (Willing_to_Relocate_YN='$Will_Relo') AND ( Specific_Industries_Jobs LIKE'%$Spec_Ind%')";
+     (Willing_to_Relocate_YN='$Will_Relo') AND ( Specific_Industries_Jobs LIKE'%$Spec_Ind%') AND (Min_Salary_Expectations='$Min_Sal')
+     AND (Service_Rank='$Ser_Rank') AND (KeywordsSelected LIKE'%$Qual_Key_Pri%')";
 
 		 $user_result = mysql_query($user_query) or die(mysql_error());
 		 $user_rows = mysql_num_rows($user_result);	
@@ -64,32 +65,26 @@
 			<title>Potential Candidates</title>
 			<link rel="stylesheet" href="style.css" />
 			<body>
-			<h2> Based on the criteria you entered, here are HHUSA candidates that match your search: </h2>
-            <table border = "1">
+			<h1> Search Results </h1>
+			<table border = "1">
 	 		<tr>
 	 		<th> ID Number</th>
-	 		<th> Current Location</th>
-            <th> Service Rank</th>
-            <th> Current Status</th>
-            <th> Min Salary Expectation</th>
-            <th> Applicant's Areas of Interest</th>
+	 		<th> Current Location </th>
+            <th> Current Employment Status </th>
+
 	 		</tr>
 			</div>
-
 			<?php
 			while($row = mysql_fetch_array($user_result))
 				{
 				echo "<tr>";
 				echo "<td>" .$row['id']. "</td>";
 				echo "<td>" .$row['MailingState']. "</td>";
-                echo "<td>" .$row['Service_Rank']. "</td>";               
 	           echo "<td>" .$row['Status_c']. "</td>";
-               echo "<td>" .$row['Min_Salary_Expectations']. "</td>";
-                echo "<td>" .$row['KeywordsSelected']. "</td>";               
     			echo "</tr>";
 	
 			
-				} 
+				}
  			}
  }
  else /* If first time through or if isset is empty, do this */
@@ -97,10 +92,10 @@
 	?>
 	<div class="form">
 	<h2>Welcome to HireHerosUSA Potential Job Candidate Search Page</h2>
-	<p>This form provides you, our corporate partner, the opportunity to search for potential job candidates.</p>
-	<p>Please complete the form, hit "submit", and a list of potential job candidates will be returned.</p>
+	<p>This form provides our corporate partners with the opportunity to search for potential job candidates.</p>
+	<p>Please complete with form, hit "submit", and a list of potential job candidates will be returned.</p>
 	<form name="EmployerSearch" action="" method="post">
-<br><br>
+
   	Type of position you wish to fill:
   <select name="Type_pos">
      <option value="">Select...</option>
@@ -173,6 +168,8 @@
   </select><br><br>
     <label> What industry are you recruiting for (enter a keyword): </label>
 	<input type="text" name="Spec_Ind"><br><br>
+  <label> What applicant area of qualification are you looking for (enter a keyword): </label>
+	<input type="text" name="Qual_Key_Pri"><br><br>
     What is the minimum education level you wish to hire:
     <select name="High_Ed">
      <option value="">Select...</option>
@@ -182,7 +179,6 @@
        <option value="4 Year Degree">4 Year Degree</option>
         <option value="Graduate Degree">Graduate Degree</option>
   </select><br><br>
-  <!--
     Salary range you wish to hire for:
   <select name="Min_Sal">
   	<option value="">Select...</option>
@@ -196,8 +192,6 @@
      <option value="$90000 - $99999">$90000 - $99999</option>                    
      <option value="$100000+">$100000+</option>
   </select><br><br>	
-    <label> What applicant area of qualification are you looking for (enter a keyword): </label>
-    <input type="text" name="Qual_Key_Pri"><br><br>
   Service rank of desired applicant (pick 1):
   <select name="Ser_Rank">
   	<option value="">Select...</option>
@@ -217,7 +211,7 @@
      <option value="E-7">E-7</option> 
      <option value="E-8">E-8</option> 
      <option value="E-9">E-9</option> 
-  </select><br><br>	-->
+  </select><br><br>	
   	<input type="submit" name="submit" value="Submit" />
 	</form>
 	</div>
