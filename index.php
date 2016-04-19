@@ -41,9 +41,11 @@
     # $Ser_Rank = mysql_real_escape_string($Ser_Rank);
 
 
-     $user_query = "SELECT id, Desired_States_of_Employment, Highest_Level_of_Education, Employment_Type, Willing_to_Relocate_YN, Specific_Industries_Jobs, Min_Salary_Expectations,
+     $user_query = "SELECT id, Desired_States_of_Employment, Highest_Level_of_Education, Employment_Type, 
+     Willing_to_Relocate_YN, Specific_Industries_Jobs, Min_Salary_Expectations,
      Service_Rank, KeywordsSelected, MailingState, Status_c
-     FROM `vet_candidates` WHERE (Desired_States_of_Employment LIKE '%$State_JobLoc%') AND (Highest_Level_of_Education='$High_Ed') AND (Employment_Type='$Type_pos') AND
+     FROM `vet_candidates` WHERE (Desired_States_of_Employment LIKE '%$State_JobLoc%') AND 
+     (Highest_Level_of_Education='$High_Ed') AND (Employment_Type='$Type_pos') AND
      (Willing_to_Relocate_YN='$Will_Relo') AND ( Specific_Industries_Jobs LIKE'%$Spec_Ind%')";
 
 		 $user_result = mysql_query($user_query) or die(mysql_error());
@@ -70,9 +72,8 @@
 	 		<th> ID Number</th>
 	 		<th> Current Location</th>
             <th> Service Rank</th>
-            <th> Current Status</th>
+            <th> Current Employment Status</th>
             <th> Min Salary Expectation</th>
-            <th> Applicant's Areas of Interest</th>
 	 		</tr>
 			</div>
 
@@ -84,8 +85,7 @@
 				echo "<td>" .$row['MailingState']. "</td>";
                 echo "<td>" .$row['Service_Rank']. "</td>";               
 	           echo "<td>" .$row['Status_c']. "</td>";
-               echo "<td>" .$row['Min_Salary_Expectations']. "</td>";
-                echo "<td>" .$row['KeywordsSelected']. "</td>";               
+               echo "<td>" .$row['Min_Salary_Expectations']. "</td>";            
     			echo "</tr>";
 	
 			
