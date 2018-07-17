@@ -66,7 +66,7 @@
 			<title>Potential Candidates</title>
 			<link rel="stylesheet" href="style.css" />
 			<body>
-			<h2> Based on the criteria you entered, here are HHUSA candidates that match your search: </h2>
+			<h2> Based on the criteria you entered, here are Hire Heroes USA candidates that match your search: </h2>
             <table border = "1">
 	 		<tr>
 	 		<th> ID Number</th>
@@ -96,7 +96,7 @@
  {
 	?>
 	<div class="form">
-	<h2>Welcome to HireHerosUSA Potential Job Candidate Search Page</h2>
+	<h2>Welcome to Hire Heroes USA Job Matching Application.</h2>
 	<p>This form provides you, our corporate partner, the opportunity to search for potential job candidates.</p>
 	<p>Please complete the form, hit "submit", and a list of potential job candidates will be returned.</p>
 	<form name="EmployerSearch" action="" method="post">
